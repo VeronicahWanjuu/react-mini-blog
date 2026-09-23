@@ -1,75 +1,91 @@
-# React + TypeScript + Vite
+﻿# Dev Insights - Mini Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React mini blog built with TypeScript and Vite as part of a
+front-end development module. The app displays a list of developer
+blog posts with styling, conditional rendering, and component
+optimization.
 
-Currently, two official plugins are available:
+## How to Install and Run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Clone the repository
+   git clone https://github.com/VeronicahWanjuu/react-mini-blog.git
 
-## React Compiler
+2. Navigate into the project
+   cd react-mini-blog
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+3. Install dependencies
+   npm install
 
-## Expanding the ESLint configuration
+4. Start the development server (uses Vite)
+   npm run dev
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+5. Open your browser at http://localhost:5173
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Project Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+src/
+├── components/
+│   ├── Header.tsx
+│   ├── Post.tsx
+│   ├── PostList.tsx
+│   └── withLogger.tsx
+├── styles/
+│   ├── App.css
+│   ├── Header.css
+│   ├── Post.css
+│   └── PostList.css
+├── App.tsx
+└── main.tsx
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Component Choices
 
-```
+I chose functional components for all parts of this project because
+they are simpler, easier to read, and work naturally with React hooks.
+Class components require more boilerplate and the "this" keyword can
+cause confusion. The React team recommends functional components for
+new projects.
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Styling Methods Used
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. External CSS files — each component has its own dedicated CSS file
+   in the src/styles/ folder for clean separation of concerns.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Inline styles — used in Post.tsx to conditionally change the
+   border-left color based on the post author.
 
-```
+## Conditional Styling
+
+- Posts by author "Veronicah" get a red left border instead of blue.
+- Posts published within the last 24 hours show a pulsing "New!" badge.
+
+## Optimization Techniques
+
+- React.memo applied to the Post component to prevent unnecessary
+  re-renders when the parent component updates.
+- Unique key prop used for each post when rendering the list.
+
+## Higher-Order Component (HOC)
+
+The withLogger HOC wraps a component and logs to the console when
+the component mounts and unmounts. It is applied to PostList inside
+App.tsx. This is useful for debugging and monitoring component
+lifecycle events.
+
+## Challenges and How I Overcame Them
+
+The biggest challenge was getting the withLogger HOC to work with
+TypeScript generics. The "T extends object" syntax was new to me and
+I had to research how generics work in TypeScript before I could make
+it compile without errors. This taught me that TypeScript's type
+system is much more powerful than I initially thought.
+
+Setting up the styles folder separately from components also took
+some adjusting — making sure all import paths were correct across
+every file.
+
+## Libraries Used
+
+- React 18
+- TypeScript
+- Vite
+- ESLint (Oxlint)
