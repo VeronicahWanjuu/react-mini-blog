@@ -80,7 +80,7 @@ it compile without errors. This taught me that TypeScript's type
 system is much more powerful than I initially thought.
 
 Setting up the styles folder separately from components also took
-some adjusting — making sure all import paths were correct across
+some adjusting  making sure all import paths were correct across
 every file.
 
 ## Libraries Used
