@@ -1,0 +1,40 @@
+﻿.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: white;
+}
+
+.header-logo h1 {
+  font-size: 2rem;
+  color: white;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.logo-accent {
+  color: #e94560;
+}
+
+.header-tagline {
+  color: #aaaaaa;
+  font-size: 0.85rem;
+  margin: 4px 0 0 0;
+}
+
+.header-nav .nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 10px 20px;
+  background-color: #e94560;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.header-nav .nav-link:hover {
+  background-color: #c73652;
+}
