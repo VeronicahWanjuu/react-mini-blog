@@ -1,4 +1,4 @@
-﻿# Dev Insights - Mini Blog
+﻿# Dev Insights: Mini Blog
 
 A React mini blog built with TypeScript and Vite as part of a
 front-end development module. The app displays a list of developer
